@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9200059561517505838}
   - component: {fileID: 6126442970281994160}
+  - component: {fileID: 7991272031703324226}
+  - component: {fileID: 5840704832473326424}
   m_Layer: 0
   m_Name: Cherry
   m_TagString: Untagged
@@ -91,3 +93,95 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!50 &7991272031703324226
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158015616625610338}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 1d2a0789d8829431a8e2358c07fc6962, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &5840704832473326424
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158015616625610338}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.97999996, y: 1.0999999}
+    newSize: {x: 0.97999996, y: 1.0999999}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.005888462, y: 0.53249395}
+      - {x: -0.2984867, y: 0.53763354}
+      - {x: -0.30510598, y: 0.4018429}
+      - {x: -0.18501186, y: 0.25912893}
+      - {x: -0.4513394, y: 0.023580328}
+      - {x: -0.45133963, y: -0.26644522}
+      - {x: -0.2626789, y: -0.45064956}
+      - {x: -0.054813534, y: -0.45510572}
+      - {x: 0.05759862, y: -0.5218832}
+      - {x: 0.25308442, y: -0.513193}
+      - {x: 0.46133947, y: -0.2811934}
+      - {x: 0.45004892, y: -0.106077194}
+      - {x: 0.33567905, y: 0.05354321}
+      - {x: 0.35466933, y: 0.19718325}
+      - {x: 0.40454865, y: 0.22156703}
+      - {x: 0.4112482, y: 0.30296767}
+      - {x: 0.33129954, y: 0.39876613}
+      - {x: 0.14445621, y: 0.4123872}
+  m_UseDelaunayMesh: 1
