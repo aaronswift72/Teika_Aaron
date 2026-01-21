@@ -589,7 +589,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.69411767, g: 0.7882353, b: 1, a: 0.5529412}
+  m_BackGroundColor: {r: 0.5803922, g: 0.6666667, b: 0.9490196, a: 0.5529412}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -743,11 +743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6629252384650268766, guid: aed6878298709414d96ef0b0df717c15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 6629252384650268766, guid: aed6878298709414d96ef0b0df717c15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.65
+      value: -2.57
       objectReference: {fileID: 0}
     - target: {fileID: 6629252384650268766, guid: aed6878298709414d96ef0b0df717c15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1084,7 +1084,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9245283, g: 0.2747419, b: 0.6772664, a: 0.39215687}
+  m_Color: {r: 0.7756474, g: 0.17421682, b: 0.8207547, a: 0.5803922}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
