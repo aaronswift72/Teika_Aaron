@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 public class NewMonoBehaviourScript : MonoBehaviour{
     
     public float speed;
+    public GameObject fruit;
+    private GameObject currentFruit;
+    
+    public float offY = -0.6f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         
@@ -11,6 +15,29 @@ public class NewMonoBehaviourScript : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+
+        //fruit position below player
+        if (currentFruit != null)
+         {
+            Vector3 playerPos = transform.position;
+            Vector3 fruitOffset = new Vector3(0.0f, offY, 0.0f);
+            currentFruit.transform.position = playerPos + fruitOffset;
+        }
+        else
+        {
+            currentFruit = Instantiate(fruit, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        }
+        //drop fruit
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
+            body.gravityScale = 1.0f;
+
+            Collider2D collider = currentFruit.GetComponent<Collider2D>();
+            collider.enabled = true;
+
+            currentFruit = null;
+        }
         
         if (Keyboard.current.aKey.isPressed){
             Vector3 newPos = transform.position;
