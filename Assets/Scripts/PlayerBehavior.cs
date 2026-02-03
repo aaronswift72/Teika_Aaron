@@ -72,5 +72,25 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             newPos.y = newPos.y - speed;
             transform.position = newPos;
         }
+        if (Keyboard.current.leftArrowKey.isPressed){
+            Vector3 newPos = transform.position;
+            newPos.x = newPos.x - speed;
+            transform.position = newPos;
+        }
+        if (Keyboard.current.rightArrowKey.isPressed){
+            Vector3 newPos = transform.position;
+            newPos.x = newPos.x + speed;
+            transform.position = newPos;
+        }
+        if (Keyboard.current.upArrowKey.isPressed){
+            Vector3 newPos = transform.position;
+            newPos.y = newPos.y + speed;
+            transform.position = newPos;
+        }
+        if (Keyboard.current.downArrowKey.isPressed){
+            Vector3 newPos = transform.position;
+            newPos.y = newPos.y - speed;
+            transform.position = newPos;
+        }
     }
 }
