@@ -1,20 +1,32 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+    //Merge Order: Cherry > Strawberry > Grape > Lemon > Orange > Apple > Pear > Banana > Watermelon > Pineapple
+
 public class NewMonoBehaviourScript : MonoBehaviour{
     
     public float speed;
-    public GameObject fruit;
     private GameObject currentFruit;
+    public GameObject[] fruits;
+    //public int[] numbers;
     
     public float offY = -0.6f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start(){
-        
+    void Start()
+    {
+        //for(int i = 0; i < numbers.Length; i++)
+        //{
+        //    print(numbers[i]); 
+        //}
     }
 
     // Update is called once per frame
     void Update(){
+
+        //int choice = Random.Range(27, 60);
+        //print (choice);
+
+    
 
         //fruit position below player
         if (currentFruit != null)
@@ -25,7 +37,8 @@ public class NewMonoBehaviourScript : MonoBehaviour{
         }
         else
         {
-            currentFruit = Instantiate(fruit, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            int choice = Random.Range(0, fruits.Length);
+            currentFruit = Instantiate(fruits[choice], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
         //drop fruit
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
