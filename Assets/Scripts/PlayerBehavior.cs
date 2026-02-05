@@ -14,6 +14,10 @@ public class NewMonoBehaviourScript : MonoBehaviour{
     
     public float offY = -0.6f;
     public float offset = 0f;
+    public float currentTime = 0.0f;
+    public float dropTime = 0.0f;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,20 +27,17 @@ public class NewMonoBehaviourScript : MonoBehaviour{
     // Update is called once per frame
     void Update(){
 
+        currentTime = Time.time;
         offset = 0f;
         //int choice = Random.Range(27, 60);
         //print (choice);
-
-        float currentTime = Time.time;
-        print(currentTime);        
-
-
+        
         //fruit position below player
         if (currentFruit != null)
-         {
+        {
             Vector3 playerPos = transform.position;
             Vector3 fruitOffset = new Vector3(0.0f, offY, 0.0f);
-            currentFruit.transform.position = playerPos + fruitOffset;
+            currentFruit.transform.position = playerPos + fruitOffset * Time.deltaTime;
         }
         else
         {
@@ -44,8 +45,10 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             currentFruit = Instantiate(fruits[choice], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
         //drop fruit
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && currentTime >= dropTime + 1f)
         {
+            dropTime = currentTime;
+
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
 
@@ -55,10 +58,12 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             currentFruit = null;
         }
         
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed){
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+        {
             offset = - speed;
         }
-        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed){
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        {
             offset = speed;
         }
 
