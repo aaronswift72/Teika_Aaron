@@ -8,25 +8,28 @@ public class NewMonoBehaviourScript : MonoBehaviour{
     public float speed;
     private GameObject currentFruit;
     public GameObject[] fruits;
+    public float min;
+    public float max;
     //public int[] numbers;
     
     public float offY = -0.6f;
+    public float offset = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //for(int i = 0; i < numbers.Length; i++)
-        //{
-        //    print(numbers[i]); 
-        //}
-    }
+       //Debug.Log(currentTime);
 
+    }
     // Update is called once per frame
     void Update(){
 
+        offset = 0f;
         //int choice = Random.Range(27, 60);
         //print (choice);
 
-    
+        float currentTime = Time.time;
+        print(currentTime);        
+
 
         //fruit position below player
         if (currentFruit != null)
@@ -52,45 +55,25 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             currentFruit = null;
         }
         
-        if (Keyboard.current.aKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x - speed;
-            transform.position = newPos;
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed){
+            offset = - speed;
         }
-        if (Keyboard.current.dKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x + speed;
-            transform.position = newPos;
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed){
+            offset = speed;
         }
-        if (Keyboard.current.wKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.y = newPos.y + speed;
-            transform.position = newPos;
+
+        Vector3 newPos = transform.position;
+        newPos.x = newPos.x + offset;
+
+        if (newPos.x > max)
+        {
+            newPos.x = max;
         }
-        if (Keyboard.current.sKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.y = newPos.y - speed;
-            transform.position = newPos;
+
+        if (newPos.x < min)
+        {
+            newPos.x = min;
         }
-        if (Keyboard.current.leftArrowKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x - speed;
-            transform.position = newPos;
-        }
-        if (Keyboard.current.rightArrowKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x + speed;
-            transform.position = newPos;
-        }
-        if (Keyboard.current.upArrowKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.y = newPos.y + speed;
-            transform.position = newPos;
-        }
-        if (Keyboard.current.downArrowKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.y = newPos.y - speed;
-            transform.position = newPos;
-        }
+        transform.position = newPos;
     }
 }
