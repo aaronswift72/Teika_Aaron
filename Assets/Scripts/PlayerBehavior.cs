@@ -16,12 +16,17 @@ public class NewMonoBehaviourScript : MonoBehaviour{
     public float offset = 0f;
     public float currentTime = 0.0f;
     public float dropTime = 0.0f;
+    public float dropCoolDown = 1f;
+    public int move;
+    public float enterTB = 0.0f;
+    public float exitTB = 0.0f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       //Debug.Log(currentTime);
+        //startTime = 0.0f;
+        move = 0; // 0 means you can move either way
 
     }
     // Update is called once per frame
@@ -44,8 +49,8 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             int choice = Random.Range(0, fruits.Length);
             currentFruit = Instantiate(fruits[choice], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
-        //drop fruit
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && currentTime >= dropTime + 1f)
+        //drop fruit with timer
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && currentTime >= dropTime + dropCoolDown)
         {
             dropTime = currentTime;
 
@@ -58,11 +63,12 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             currentFruit = null;
         }
         
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+        // Keyboard movement of player
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed && move != 1)
         {
             offset = - speed;
         }
-        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed && move != 2)
         {
             offset = speed;
         }
@@ -80,5 +86,29 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             newPos.x = min;
         }
         transform.position = newPos;
+    }
+
+    private void OnCollisionEnter2D (Collision2D other)
+    {
+        if (other.gameObject.CompareTag("LB"))
+        {
+            move = 1; // Cannot move left
+        }
+        if (other.gameObject.CompareTag("RB"))
+        {
+            move = 2; //Cannot move right
+        }
+    }
+
+    private void OnCollisionExit2D (Collision2D other)
+    {
+        if (other.gameObject.CompareTag("LB"))
+        {
+            move = 0; //Can move either way
+        }
+        if (other.gameObject.CompareTag("RB"))
+        {
+
+        }
     }
 }
