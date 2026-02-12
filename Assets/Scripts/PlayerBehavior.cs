@@ -20,7 +20,7 @@ public class NewMonoBehaviourScript : MonoBehaviour{
     public int move;
     public float enterTB = 0.0f;
     public float exitTB = 0.0f;
-
+    public bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +31,7 @@ public class NewMonoBehaviourScript : MonoBehaviour{
     }
     // Update is called once per frame
     void Update(){
-
+        gameOver = BorderBehavior.instance.callIsGameOver();
         currentTime = Time.time;
         offset = 0f;
         //int choice = Random.Range(27, 60);
@@ -50,7 +50,7 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             currentFruit = Instantiate(fruits[choice], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
         //drop fruit with timer
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && currentTime >= dropTime + dropCoolDown)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && currentTime >= dropTime + dropCoolDown && gameOver == false)
         {
             dropTime = currentTime;
 
@@ -73,19 +73,23 @@ public class NewMonoBehaviourScript : MonoBehaviour{
             offset = speed;
         }
 
-        Vector3 newPos = transform.position;
-        newPos.x = newPos.x + offset;
-
-        if (newPos.x > max)
+        if (gameOver == false)
         {
-            newPos.x = max;
-        }
+            Vector3 newPos = transform.position;
+            newPos.x = newPos.x + offset;
 
-        if (newPos.x < min)
-        {
-            newPos.x = min;
+            if (newPos.x > max)
+            {
+                newPos.x = max;
+            }
+
+            if (newPos.x < min)
+            {
+                newPos.x = min;
+            }
+            transform.position = newPos;
         }
-        transform.position = newPos;
+        
     }
 
     private void OnCollisionEnter2D (Collision2D other)
@@ -111,4 +115,5 @@ public class NewMonoBehaviourScript : MonoBehaviour{
 
         }
     }
+    
 }
